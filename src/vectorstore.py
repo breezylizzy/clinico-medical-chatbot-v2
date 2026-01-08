@@ -7,7 +7,7 @@ from src.embedding import get_embeddings
 
 import time
 
-index_name = "clinico"
+index_name = "mediskin"
 
 def vectorstore():
     pc = Pinecone(api_key=PINECONE_API_KEY)
@@ -31,7 +31,7 @@ def vectorstore():
         time.sleep(5)
         
         print("Loading PDF files...")
-        extracted_data = load_pdf_files("C:/Users/eliza/CLINICO-Medical-Chatbot/data")
+        extracted_data = load_pdf_files("C:/Users/eliza/mediskin-chatbot/data/rag_documents")
         print(f"Loaded {len(extracted_data)} documents")
         
         print("Filtering documents...")

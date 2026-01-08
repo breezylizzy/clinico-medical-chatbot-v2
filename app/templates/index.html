@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Mediskin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <div class="brand-name">Mediskin</div>
+          <div class="brand-tag">Digital Health Assistant</div>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a href="{{ url_for('routes.index') }}" class="active">Home</a>
+        <a href="{{ url_for('routes.chatbot') }}">Asisten Chatbot</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="home">
+      <!-- Banner Image -->
+      <a href="https://github.com/breezylizzy/mediskin-chatbot" target="_blank" rel="noopener noreferrer">
+        <picture>
+          <source media="(max-width: 600px)" srcset="{{ url_for('static', filename='images/mobile.png') }}">
+          <img class="hero-image-img" src="{{ url_for('static', filename='images/desktop.png') }}" alt="Mediskin banner">
+        </picture>
+      </a>
+
+
+      <div class="home-desc">
+        <h1>Mediskin — Digital Health Assistant</h1>
+        <p>
+          Mediskin adalah website demo untuk project AI kesehatan: medical chatbot berbasis Python (RAG + GenAI),
+          serta modul klasifikasi citra medis yakni Skin Disease.
+        </p>
+
+        <div class="pill-row">
+          <span class="pill">RAG + GenAI Chatbot</span>
+          <span class="pill">Deep Learning Image Classification</span>
+          <span class="pill">Modular Model Routing</span>
+        </div>
+
+        <div class="info">
+          <strong>Catatan:</strong> Output AI bersifat informatif untuk demo/edukasi dan bukan pengganti diagnosis dokter.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 Mediskin — Demo Project</div>
+      <div class="small">Disclaimer: ini demo, bukan pengganti konsultasi medis.</div>
+    </div>
+  </footer>
+</body>
+</html>

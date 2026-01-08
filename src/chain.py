@@ -1,4 +1,3 @@
-# src/rag_chain.py
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain_core.runnables.history import RunnableWithMessageHistory
@@ -25,7 +24,7 @@ def create_rag_chain(chat_model):
         rag_chain,
         get_session_history,
         input_messages_key="input",
-        history_messages_key="history"
+        history_messages_key="history",
+        output_messages_key="answer",  
     )
-
     return rag_with_memory

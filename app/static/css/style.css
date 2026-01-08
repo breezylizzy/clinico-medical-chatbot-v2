@@ -1,0 +1,309 @@
+:root{
+  /* warna */
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --line: rgba(15, 23, 42, .12);
+
+  /* biru highlight */
+  --blue: #2563eb;
+  --blue-weak: rgba(37, 99, 235, .10);
+
+  /* background seamless (disarankan pakai path relatif) */
+  --bg-image: url("/static/images/bg-seamless.jpg");
+}
+
+/* ---------- sticky footer layout ---------- */
+html, body { height: 100%; }
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color: var(--text);
+  background-color: var(--bg);
+
+  /* seamless background */
+  background-image: var(--bg-image);
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+main{ flex:1; }
+
+a{ color:inherit; text-decoration:none; }
+.container{ width:min(1100px, 92%); margin:0 auto; }
+
+/* ---------- header/nav ---------- */
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 0;
+}
+.brand{ display:flex; gap:10px; align-items:center; }
+.logo{
+  width:38px; height:38px;
+  border-radius:12px;
+  display:grid; place-items:center;
+  background: linear-gradient(135deg, var(--blue), #60a5fa);
+  color: #fff;
+  font-weight: 800;
+}
+.brand-name{ font-weight: 800; letter-spacing:.2px; }
+.brand-tag{ font-size:12px; color: var(--muted); margin-top:2px; }
+
+.menu{ display:flex; gap:10px; align-items:center; }
+.menu a{
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: var(--muted);
+}
+.menu a.active, .menu a:hover{
+  color: var(--blue);
+  background: var(--blue-weak);
+}
+
+/* ---------- footer ---------- */
+.footer{
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,.9);
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  color: var(--muted);
+}
+.small{ font-size: 12px; }
+.muted{ color: var(--muted); }
+
+/* ---------- homepage simple ---------- */
+.home{
+  padding: 26px 0 10px;
+  display:grid;
+  gap: 18px;
+}
+
+.hero-image-img{
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.85);
+  display: block;
+}
+
+@media (max-width: 600px){
+  .hero-image-img{ border-radius: 14px; }
+}
+
+.home-desc{
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.85);
+  padding: 18px;
+}
+.home-desc h1{
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+.home-desc p{
+  margin: 0 0 14px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.pill-row{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.pill{
+  font-size: 12px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.9);
+  color: var(--text);
+}
+.info{
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(37,99,235,.18);
+  background: rgba(37,99,235,.07);
+  color: var(--text);
+}
+
+/* ---------- reusable card/button ---------- */
+.card{
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: rgba(255,255,255,.85);
+}
+.btn{
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.9);
+  cursor: pointer;
+}
+.btn.primary{
+  border: 1px solid rgba(37,99,235,.25);
+  background: rgba(37,99,235,.10);
+  color: var(--blue);
+  font-weight: 700;
+}
+.btn:disabled{ opacity: .6; cursor: not-allowed; }
+
+.page-head{ padding: 22px 0 8px; }
+.page-head h2{ margin: 0 0 8px; }
+.page-head p{ margin: 0; color: var(--muted); }
+
+/* ===================== CHAT (GPT-like) ===================== */
+.chat-wrap{ margin: 8px 0 24px; }
+
+.chat-box{
+  height: 420px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(255,255,255,.85);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* bubble tidak full width */
+.bubble{
+  display: inline-flex;              /* kunci: bukan block full width */
+  flex-direction: column;
+  width: fit-content;
+  max-width: min(78%, 640px);
+  padding: 10px 12px;
+  border-radius: 14px;
+  line-height: 1.45;
+  border: 1px solid var(--line);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* bot kiri */
+.bubble.bot{
+  align-self: flex-start;
+  background: rgba(2,132,199,.08);
+}
+
+/* user kanan */
+.bubble.user{
+  align-self: flex-end;
+  background: rgba(37,99,235,.10);
+}
+
+/* gambar di bubble chat */
+.bubble .bubble-img{
+  display: block;
+  width: min(280px, 100%);
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+/* input row */
+.chat-input{
+  display:flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.chat-input input{
+  flex: 1;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.95);
+  outline: none;
+}
+
+/* --- upload + dropzone --- */
+.drop-zone{
+  flex: 1;
+  position: relative;
+  border: 1px dashed rgba(37,99,235,.35);
+  border-radius: 12px;
+  background: rgba(255,255,255,.95);
+  padding: 6px;
+  display:flex;
+  align-items:center;
+}
+
+.drop-zone.dragover{
+  background: rgba(37,99,235,.08);
+  border-color: rgba(37,99,235,.6);
+}
+
+.drop-zone input{
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 10px 8px;
+}
+
+.drop-hint{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: .7;
+}
+
+/* --- preview area (sebelum kirim) --- */
+.image-preview{
+  margin-top: 10px;
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(255,255,255,.85);
+}
+
+.image-preview img{
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.preview-meta{ flex: 1; min-width: 0; }
+.preview-name{
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.preview-size{ margin-top: 2px; }
+
+.hidden{ display:none; }
